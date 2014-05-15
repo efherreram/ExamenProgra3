@@ -102,6 +102,116 @@ public:
         read.close();
     }
     
+    void promedio(){
+        if(inicio == NULL){
+            return;
+        }
+        
+        double suma = 0;
+        double cant = 0;
+        
+        Animal *tmp = inicio;
+        
+        while(tmp!=NULL){
+            suma+= tmp->edad;
+            cant+=1;
+            tmp = tmp->sig;
+        }
+        
+        cout << "Promedio: " <<  suma/cant << endl;
+        
+        
+    }
+    
+    Animal* Mayor(){
+        if(inicio== NULL){
+            return NULL;
+        }
+        
+        Animal*tmp = inicio;
+        Animal*mayor = tmp;
+        
+        while(tmp!=NULL){
+            if(tmp->edad>mayor->edad)
+                mayor = tmp;
+            tmp = tmp->sig;
+        }
+        return mayor;
+        
+    }
+
+    Animal* Menor(){
+        if(inicio== NULL){
+            return NULL;
+        }
+        
+        Animal *tmp = inicio;
+        Animal *menor = tmp;
+        
+        while(tmp!=NULL){
+            if(tmp->edad<menor->edad)
+                menor = tmp;
+            tmp = tmp->sig;
+        }
+        return menor;
+        
+    }
+    
+    Animal* buscar(string nom){
+        if(inicio == NULL)
+            return NULL;
+        
+        Animal *tmp = inicio;
+        
+        while(tmp!=NULL){
+            if (tmp->nom == nom) {
+                return tmp;
+            }
+            tmp = tmp->sig;
+        }
+        cout << "ANIMAL NO EXISTE\n";
+        return NULL;
+        
+    }
+    
+    void borrar(string nom){
+        if(inicio==NULL)
+            return;
+        if(inicio->nom==nom){
+            inicio = inicio->sig;
+            return;
+        }
+        
+        Animal *tmp = inicio;
+        while(tmp->sig!=NULL){
+            if(tmp->sig->nom==nom){
+                if(tmp->sig->sig==NULL){
+                    delete tmp->sig;
+                    tmp->sig = NULL;
+                    return;
+                }
+                delete tmp->sig;
+                tmp->sig = tmp->sig->sig;
+                return;
+            }
+            tmp = tmp->sig;
+        }
+    }
+    
+    void insertar(Animal*animal , int posicion ){
+        
+        Animal*temp = inicio;
+        for(int i=0; i<posicion; i++){
+            
+            temp = temp->sig;
+        }
+        
+        animal->sig = temp->sig;
+        temp->sig = animal;
+        
+        
+    }
+    
 
     
 };

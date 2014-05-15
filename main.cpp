@@ -23,11 +23,10 @@ int main(int argc, char * argv[])
 {
 
     Lista l;
-    l.agregar(new Perro(3,"epdro"));
+    l.promedio();
+    l.borrar("pedro");
     l.imprimir();
-    l.escribir();
-    
-    
+       
     return 0;
 
 }

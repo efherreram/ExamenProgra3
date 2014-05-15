@@ -38,7 +38,9 @@ public:
     
     virtual void rugir() = 0;
         
-    
+    virtual ~Animal(){
+        
+    }
         
     
     
