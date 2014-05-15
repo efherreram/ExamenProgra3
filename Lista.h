@@ -102,9 +102,9 @@ public:
         read.close();
     }
     
-    void promedio(){
+    double promedio(){
         if(inicio == NULL){
-            return;
+            return 0;
         }
         
         double suma = 0;
@@ -119,7 +119,7 @@ public:
         }
         
         cout << "Promedio: " <<  suma/cant << endl;
-        
+        return suma/cant;
         
     }
     
@@ -200,14 +200,26 @@ public:
     
     void insertar(Animal*animal , int posicion ){
         
-        Animal*temp = inicio;
-        for(int i=0; i<posicion; i++){
+        if(posicion == 0){
             
+            Animal *tmp = animal;
+            tmp->sig = inicio;
+            inicio = tmp;
+            return;
+        }
+        Animal*temp = inicio;
+        
+        for(int i= 1; i < posicion; i++){
+            
+            if(temp->sig == NULL){
+                temp->sig = animal;
+                return;
+            }
             temp = temp->sig;
         }
         
-        animal->sig = temp->sig;
-        temp->sig = animal;
+        animal-> sig = temp -> sig;
+        temp -> sig = animal;
         
         
     }

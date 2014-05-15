@@ -23,10 +23,10 @@ int main(int argc, char * argv[])
 {
 
     Lista l;
-    l.promedio();
-    l.borrar("pedro");
+    
     l.imprimir();
-       
+    l.promedio();
+    
     return 0;
 
 }
